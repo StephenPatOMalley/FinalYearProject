@@ -1,14 +1,32 @@
+import classes from './DataItem.module.css'
 
 function DataItem(props) {
     return(
-        <li>
-            <h1>Results</h1>
-            <h2>2 - {props.temp}</h2>
-            <h2>3 - {props.hum}</h2>
-            <h2>4 - {props.pres}</h2>
-            <h2>5 - {props.alt}</h2>
-            <h2>6 - {props.en}</h2>
-        </li>
+        <div className={classes.dataItem}>
+            <table className={classes.table}>
+                <th colSpan={2}>Results</th>
+                <tr>
+                    <td>Temperature </td>
+                    <td>{props.temp} &#176;C</td>
+                </tr>
+                <tr>
+                    <td>Humidity</td>
+                    <td>{props.hum}%</td>
+                </tr>
+                <tr>
+                    <td>Pressure</td>
+                    <td>{props.pres} hPa</td>
+                </tr>
+                <tr>
+                    <td>Altitude</td>
+                    <td>{props.alt} m</td>
+                </tr>
+                <tr>
+                    <td>Fan-Enabled</td>
+                    <td>{props.en}</td>
+                </tr>                    
+            </table>
+        </div>
     );
 }
 

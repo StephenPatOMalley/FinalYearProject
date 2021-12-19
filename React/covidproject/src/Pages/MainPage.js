@@ -15,9 +15,12 @@ function MainPage(){
         }).then((data) => {
             const ESP32_APP = [];
             
+            //Key is the area in which the data is stored on firebase i.e. Data
             for (const key in data) {
                 const result = {
+                  //id is the name of the key i.e. Data
                   id: key,
+                  //Copys all of the data in the key and addeds it to reault an using the spread operator "..." 
                   ...data[key]
                 };
       
@@ -32,7 +35,6 @@ function MainPage(){
     if(isLoading){
         return(
         <section>
-            <h1>Update</h1>
             <DataList datas={loadedData}/>
         </section>
         );
@@ -41,7 +43,7 @@ function MainPage(){
     else{
         return(
             <section>
-                <h1>Error</h1>
+                <h1>Connection Error</h1>
             </section>
         );
     }

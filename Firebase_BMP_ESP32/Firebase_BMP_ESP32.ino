@@ -8,7 +8,7 @@
 #include <FirebaseESP32.h>
 #include  <WiFi.h>
 
-#define SEALEVELPRESSURE_HPA (1013.25)
+#define SEALEVELPRESSURE_HPA (1030)
 
 #define FIREBASE_HOST "finalyear-651ba-default-rtdb.europe-west1.firebasedatabase.app"
 #define WIFI_SSID "FRITZ!Box 7430 BX" // Change the name of your WIFI
@@ -17,8 +17,8 @@
 
 Adafruit_BME280 bme; // I2C
 
+//Define the Firebase Data object
 FirebaseData firebaseData;
-FirebaseJson json;
 
 unsigned long delayTime;
 int fan = 0;
@@ -38,14 +38,13 @@ void setup() {
   Serial.print("IP Address: ");
   Serial.println(WiFi.localIP());
   Serial.println();
+  //Initialize the library with the Firebase authen and config.
   Firebase.begin(FIREBASE_HOST,FIREBASE_Authorization_key);
 
   unsigned status;
   
   // default settings
   status = bme.begin(0x76);  
-  // You can also pass in a Wire library object like &Wire2
-  // status = bme.begin(0x76, &Wire2)
   if (!status) {
       Serial.println("Could not find a valid BME280 sensor, check wiring, address, sensor ID!");
       Serial.print("SensorID was: 0x"); Serial.println(bme.sensorID(),16);
