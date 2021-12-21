@@ -5,7 +5,8 @@ This is my Final year project Sofware & Electroinc Engineering
 Include in the above files is the React Webserver and the Arduino code for the ESP-32 
 
 # All Refenrences
-Project
+Project:
+
 https://www.itsfoss.com/download-youtube-linux/
 
 http://www.asic-world.com/verilog/veritut.html
@@ -28,7 +29,8 @@ https://hackaday.io/project/170140-esp32-littlevgl-websocket-driver
 
 https://electropeak.com/learn/interfacing-pn532-nfc-rfid-reader-writer-module-i2c-spi-with-arduino/
 
-Project Refernces
+Project Refernces:
+
 https://create.arduino.cc/projecthub/corona-guard/corona-guard-7fb2dd?ref=tag&ref_id=nfc&offset=1
 
 https://docs.espressif.com/projects/esp-idf/en/latest/esp32/hw-reference/esp32/get-started-devkitc.html
@@ -65,14 +67,16 @@ https://sandboxelectronics.com/?p=147
 
 https://www.emqx.com/en/blog/how-to-use-mqtt-in-react
 
-Project Bugs
+Project Bugs:
+
 https://duckduckgo.com/?q=esp-idf+x509_crt_bundle&t=newext&atb=v279-1&ia=web
 
 https://github.com/espressif/esp-idf/issues/5322
 
 https://www.sitepoint.com/collapsing-margins/
 
-Used Project
+Used Project:
+
 https://microcontrollerslab.com/esp32-send-sensor-data-google-firebase-display-android-app/
 
 https://duckduckgo.com/?q=arduino+to+firebase+esp32&t=newext&atb=v279-1&ia=web
