@@ -10,12 +10,12 @@
 #include <Adafruit_Sensor.h>
 
 // Replace the next variables with your SSID/Password combination
-const char* ssid = "REPLACE_WITH_YOUR_SSID";
-const char* password = "REPLACE_WITH_YOUR_PASSWORD";
+const char* ssid = "eir83257563";
+const char* password = "7PJRUsuhkk";
 
 // Add your MQTT Broker IP address, example:
 //const char* mqtt_server = "192.168.1.144";
-const char* mqtt_server = "YOUR_MQTT_BROKER_IP_ADDRESS";
+const char* mqtt_server = "192.168.1.112";
 
 WiFiClient espClient;
 PubSubClient client(espClient);
@@ -49,7 +49,7 @@ void setup() {
     while (1);
   }
   setup_wifi();
-  client.setServer(mqtt_server, 1883);
+  client.setServer(mqtt_server, 1884);
   client.setCallback(callback);
 
   pinMode(ledPin, OUTPUT);
@@ -109,7 +109,7 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print("Attempting MQTT connection...");
     // Attempt to connect
-    if (client.connect("ESP8266Client")) {
+    if (client.connect("espClient")) {
       Serial.println("connected");
       // Subscribe
       client.subscribe("esp32/output");
