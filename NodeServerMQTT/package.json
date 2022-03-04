@@ -1,16 +1,17 @@
-
 {
   "name": "NodeServer",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "subMQTT.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node subMQTT.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "mongodb": "^4.4.1",
+    "mongoose": "^6.2.4",
     "mqtt": "^4.3.6"
   }
 }

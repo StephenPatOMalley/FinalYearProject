@@ -152,7 +152,7 @@ void loop() {
     
     // Convert the value to a char array
     char humString[8];
-    dtostrf(humidity, 1, 2, humString);
+    dtostrf(humidity, 1, 2, humString); 
     Serial.print("Humidity: ");
     Serial.println(humString);
     client.publish("esp32/humidity", humString);
