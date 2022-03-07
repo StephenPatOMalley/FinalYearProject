@@ -52,7 +52,7 @@ void MQTTPublish(){
 
 void MQTTreconnect(){
   while(!esp_client.connected()){
-    Serial.println("Trying to Reconnect");
+    Serial.println("Trying to Reconnect...");
     MQTTConnectHost();
     MQTTConnectBroker();
     MQTTSubscribe();

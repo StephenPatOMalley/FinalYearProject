@@ -40,4 +40,5 @@ void BMEValues(){
   Serial.print(humidity);
   Serial.println(" %");
   MQTTPubHumi(humidity);
+  
 }

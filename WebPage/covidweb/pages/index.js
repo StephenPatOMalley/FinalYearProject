@@ -1,4 +1,8 @@
 import DataList from '../page_components/Data/DataList'
+import { useContext } from 'react';
+import DataContext from '../store/data-store.js'
+
+
 
 const DUMMY = [
   {
@@ -10,10 +14,12 @@ const DUMMY = [
   }
 ]
 
-function HomePage(props){
-
+function HomePage(props)
+{
+  const dataCtx = useContext(DataContext)
+  let temp = dataCtx.getTemperature()
+  //console.log('-----', temp)
   return <DataList datas = {props.datas}/>
-
 }
 
 export async function getStaticProps() {
