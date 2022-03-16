@@ -1,0 +1,13 @@
+# This affects access control for clients with no username.
+topic read $SYS/#
+
+# This only affects clients with username "Steve".
+user Steve
+topic esp32/output
+topic esp32/temperature
+topic esp32/pressure
+topic esp32/altitude
+topic esp32/humidity
+
+# This affects all clients.
+pattern write $SYS/broker/connection/%c/state

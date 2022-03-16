@@ -12,19 +12,7 @@ function DataItem(props) {
                 <tr>
                     <td>Humidity</td>
                     <td>{props.hum}%</td>
-                </tr>
-                <tr>
-                    <td>Pressure</td>
-                    <td>{props.pres} hPa</td>
-                </tr>
-                <tr>
-                    <td>Altitude</td>
-                    <td>{props.alt} m</td>
-                </tr>
-                <tr>
-                    <td>Fan-Enabled</td>
-                    <td>{props.en}</td>
-                </tr>                    
+                </tr>    
             </table>
         </div>
     );

@@ -1,17 +1,17 @@
-import Layout from '../page_components/Layout/Layout'
 import '../styles/globals.css'
+import Layout from '../page_components/Layout/Layout'
 import { NextUIProvider } from "@nextui-org/react";
 import { DataContextProvider } from '../store/data-store'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <DataContextProvider>
-     <NextUIProvider>
+    <NextUIProvider>
+      <DataContextProvider>
         <Layout>
           <Component {...pageProps} />
         </Layout>
-      </NextUIProvider>
-    </DataContextProvider>
+      </DataContextProvider>
+    </NextUIProvider>
   );
 }
 
