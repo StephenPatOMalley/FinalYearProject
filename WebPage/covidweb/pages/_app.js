@@ -1,16 +1,19 @@
 import '../styles/globals.css'
-import Layout from '../page_components/Layout/Layout'
+import Layout from '../components/Layout/Layout'
 import { NextUIProvider } from "@nextui-org/react";
-import { DataContextProvider } from '../store/data-store'
+import { CurrentDataContextProvider } from '../store/currentBMEData'
+import { YesterdayDataContextProvider } from '../store/lastDayBMEData'
 
 function MyApp({ Component, pageProps }) {
   return (
     <NextUIProvider>
-      <DataContextProvider>
-        <Layout>
-          <Component {...pageProps} />
-        </Layout>
-      </DataContextProvider>
+      <YesterdayDataContextProvider>
+        <CurrentDataContextProvider>
+          <Layout>
+            <Component {...pageProps} />
+          </Layout>
+        </CurrentDataContextProvider>
+      </YesterdayDataContextProvider>
     </NextUIProvider>
   );
 }
