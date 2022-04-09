@@ -2,7 +2,6 @@ const mqtt = require('mqtt')
 const express = require('express');
 const router = express.Router();
 const mongoose = require("mongoose");
-const async = require('hbs/lib/async');
 const host = '192.168.178.26'
 const port = '1884'
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`

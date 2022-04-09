@@ -5,6 +5,7 @@
 #include "WiFi_ESP.h"
 #include "MQTT.h"
 #include "BME_Sensor.h"
+#include "MQ135_Sensor.h"
 
 WiFiClient esp_client;
 MQTTPubSubClient esp_mqtt;
@@ -47,6 +48,7 @@ void MQTTPublish(){
   if (millis() > prev_ms + 1000) {
       prev_ms = millis();
       BMEValues();
+      MQ135Values();
   }
 }
 
@@ -82,4 +84,10 @@ void MQTTPubHumi(float humiValue){
   char humiString[8];
   dtostrf(humiValue, 1, 2, humiString); //Converts the Float into a string
   esp_mqtt.publish("esp32/humidity", humiString);
+}
+
+void MQTTPubCO2(float CO2Value){
+  char CO2String[8];
+  dtostrf(CO2Value, 1, 2, CO2String); //Converts the Float into a string
+  esp_mqtt.publish("esp32/CO2", CO2String);
 }
