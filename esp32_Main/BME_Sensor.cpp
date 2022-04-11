@@ -16,28 +16,22 @@ void InitialiseBME(){
   }
 }
 
-void BMEValues(){
+float BME_Temperature(){
   float temperature = 0.0;
+  
   temperature = bme.readTemperature();
   Serial.print(temperature);
   Serial.println(" °C");
-  MQTTPubTemp(temperature);
 
-  float pressure = 0.0;
-  pressure = bme.readPressure() / 100.0F;;
-  Serial.print(pressure);
-  Serial.println(" hPa");
-  MQTTPubPres(pressure);
+  return temperature;
+}
 
-  float altitude = 0.0;
-  altitude = bme.readAltitude(SEALEVELPRESSURE_HPA);
-  Serial.print(altitude);
-  Serial.println(" m");
-  MQTTPubAlti(altitude);
-
+float BME_Humidity(){
   float humidity = 0.0;
+  
   humidity = bme.readHumidity();
   Serial.print(humidity);
   Serial.println(" %");
-  MQTTPubHumi(humidity);
+
+  return humidity;
 }

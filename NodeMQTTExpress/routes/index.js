@@ -1,16 +1,12 @@
 const mqtt = require('mqtt')
 const express = require('express');
-const router = express.Router();
 const mongoose = require("mongoose");
+const router = express.Router();
 const host = '192.168.178.26'
 const port = '1884'
 const clientId = `mqtt_${Math.random().toString(16).slice(3)}`
-const topicTemp = 'esp32/temperature'
-const topicHum = 'esp32/humidity'
+const topic = 'esp32/roomData'
 const Schema = mongoose.Schema
-
-var messageLoadTemp = null
-var messageLoadHum = null
 
 const connectUrl = `mqtt://${host}:${port}`
 const client = mqtt.connect(connectUrl, {
@@ -24,12 +20,14 @@ const client = mqtt.connect(connectUrl, {
 
 const bmeSchema = new Schema(
   {
-    timeStamp: String,
-    temperature: String,
-    humidity: String
+    TimeStamp: String,
+    Temperature: Number,
+    Humidity: Number,
+    CarbonDioxide: Number,
   },
   { collection: 'bme' }
 );
+
 const BMEModel = mongoose.model('bmeData', bmeSchema)
 
 async function mongooseConnect() {
@@ -72,24 +70,18 @@ router.post("/getbmeLastDayData", async (req, res) => {
 client.on('connect', () => {
   console.log('Connected')
   mongooseConnect().catch(err => console.log(err));
-  client.subscribe([topicTemp], () => {console.log(`Subscribe to topic '${topicTemp}'`)})
-  client.subscribe([topicHum], () => {console.log(`Subscribe to topic '${topicHum}'`)})
+  client.subscribe([topic], () => {console.log(`Subscribe to topic '${topic}'`)})
 })
 
 client.on('message', (topic, payload) => {
+  let load = null
   let stamp = getCurrentTime()
-  if(topic == topicTemp){
-    messageLoadTemp = payload.toString()
-  }
-  else if(topic == topicHum){
-    messageLoadHum = payload.toString()
-  }
-  if(messageLoadTemp != null && messageLoadHum != null){
-    //console.log('Received Message:', messageLoadTemp, messageLoadHum)
-    const data = new BMEModel({timeStamp: stamp, temperature: messageLoadTemp ,humidity: messageLoadHum})
+  let messageLoad = payload.toString() 
+  load = JSON.parse(messageLoad)
+  if(load != null ){
+    const data = new BMEModel({TimeStamp: stamp, Temperature: load.temperature ,Humidity: load.humidity , CarbonDioxide: load.CO2})
     mongooseSave(data).catch(err => console.log(err));
-    messageLoadTemp = null
-    messageLoadHum = null
+    load = null
     stamp = null
   }
 })

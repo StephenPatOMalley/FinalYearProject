@@ -6,6 +6,7 @@
 #define SEALEVELPRESSURE_HPA 1030
 
 void InitialiseBME();
-void BMEValues();
+float BME_Temperature();
+float BME_Humidity();
 
 #endif //BME_Sensor_h

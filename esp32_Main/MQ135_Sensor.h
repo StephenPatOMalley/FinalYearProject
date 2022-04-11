@@ -12,6 +12,6 @@
 
 void InitialiseMQ135();
 void CalibrateMQ135();
-void MQ135Values();
+float MQ135_CO2();
 
 #endif //MQ135_Sensor_h

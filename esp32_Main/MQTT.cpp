@@ -1,6 +1,8 @@
 #include <WiFi.h>
+#include <WiFiClientSecure.h>
 #include <Arduino.h>
 #include <MQTTPubSubClient.h>
+#include <ArduinoJson.h>
 
 #include "WiFi_ESP.h"
 #include "MQTT.h"
@@ -47,8 +49,19 @@ void MQTTPublish(){
   static uint32_t prev_ms = millis();
   if (millis() > prev_ms + 1000) {
       prev_ms = millis();
-      BMEValues();
-      MQ135Values();
+      
+      StaticJsonDocument<128> jsonDoc;
+      
+      // Write the temperature & humidity. Here you can use any C++ type (and you can refer to variables)
+      jsonDoc["temperature"] = BME_Temperature();
+      jsonDoc["humidity"] = BME_Humidity();
+      jsonDoc["CO2"] = MQ135_CO2();
+    
+      Serial.println("Publishing message...");
+      char buffer[128];
+      serializeJson(jsonDoc, buffer);
+      
+      esp_mqtt.publish("esp32/roomData", buffer);
   }
 }
 
@@ -60,34 +73,4 @@ void MQTTreconnect(){
     MQTTSubscribe();
     delay(5000);
   }
-}
-
-void MQTTPubTemp(float tempValue){
-  char tempString[8];
-  dtostrf(tempValue, 1, 2, tempString); //Converts the Float into a string
-  esp_mqtt.publish("esp32/temperature", tempString);
-}
-
-void MQTTPubPres(float presValue){
-  char presString[8];
-  dtostrf(presValue, 1, 2, presString); //Converts the Float into a string
-  esp_mqtt.publish("esp32/pressure", presString);
-}
-
-void MQTTPubAlti(float altiValue){
-  char altiString[8];
-  dtostrf(altiValue, 1, 2, altiString); //Converts the Float into a string
-  esp_mqtt.publish("esp32/altitude", altiString);
-}
-
-void MQTTPubHumi(float humiValue){
-  char humiString[8];
-  dtostrf(humiValue, 1, 2, humiString); //Converts the Float into a string
-  esp_mqtt.publish("esp32/humidity", humiString);
-}
-
-void MQTTPubCO2(float CO2Value){
-  char CO2String[8];
-  dtostrf(CO2Value, 1, 2, CO2String); //Converts the Float into a string
-  esp_mqtt.publish("esp32/CO2", CO2String);
 }
