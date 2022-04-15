@@ -1,0 +1,17 @@
+.container {
+    position: static;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    width: auto;
+    height: 800px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+  
+.graph {
+    width: 1600px;
+    height: 500px;
+}
+  

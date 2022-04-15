@@ -26,7 +26,7 @@ void CalibrateMQ135(){
 
 float MQ135_CO2(){
   MQ135.update();
-  
+  MQ135.serialDebug(); 
   float CO2 = 0;
   CO2 = MQ135.readSensor(); // Sensor will read PPM concentration using the model, a and b values
 

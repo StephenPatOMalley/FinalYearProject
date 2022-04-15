@@ -52,10 +52,14 @@ void MQTTPublish(){
       
       StaticJsonDocument<128> jsonDoc;
       
+      float temp = BME_Temperature();
+      float humi = BME_Humidity();
+      float cardi = MQ135_CO2();
+      
       // Write the temperature & humidity. Here you can use any C++ type (and you can refer to variables)
-      jsonDoc["temperature"] = BME_Temperature();
-      jsonDoc["humidity"] = BME_Humidity();
-      jsonDoc["CO2"] = MQ135_CO2();
+      jsonDoc["temperature"] = temp;
+      jsonDoc["humidity"] = humi;
+      jsonDoc["CO2"] = cardi;
     
       Serial.println("Publishing message...");
       char buffer[128];

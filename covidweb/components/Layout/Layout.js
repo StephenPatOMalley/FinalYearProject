@@ -1,9 +1,8 @@
 import MainHeader from "./MainHeader";
-import classes from './Layout.module.css';
 
 function Layout(props) {
     return (
-        <div className={classes.div}>
+        <div>
             <MainHeader />
             {props.children}
         </div>

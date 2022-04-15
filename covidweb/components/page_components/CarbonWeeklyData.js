@@ -8,40 +8,36 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 var dataPoints  = []
 
-class CarbonData extends Component{
+class CarbonWeeklyData extends Component {
+ 
 	render() {	
 		const options = {
 			theme: "light2",
-			zoomEnabled: true,
-			animationEnabled: true,
 			title: {
-				text: "24 Hour Results"
+				text: "Weekly Results"
 			},
 			axisY: {
 				title: "Parts Per Million (PPM)",
 			},
-			axisX:{
-				title: "Time (UTC)",
-                interval:2,
+            axisX:{
+                interval:1,
                 intervalType: "hour",
-                valueFormatString: "HH"
+                valueFormatString: "DD-HH"
             },
 			data: [{
 				type: "line",
-				xValueType: "MMMM",
 				dataPoints: dataPoints
 			}]
 		}
 		return (
-
 		<div className={classes.container}>
-			<div className={classes.graph}>
-				<CanvasJSChart options = {options} 
-						onRef={ref => this.chart = ref}
-				/>
-			</div>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
+            <div className={classes.graph}>
+                <CanvasJSChart options = {options} 
+                    onRef={ref => this.chart = ref}
+                />
+                {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+            </div>
+        </div>
 		);
 	}
 	
@@ -58,7 +54,7 @@ class CarbonData extends Component{
 			});
 		}
 		chart.render();
-	}	
+	}
 }
  
-export default CarbonData                            
+export default CarbonWeeklyData    
