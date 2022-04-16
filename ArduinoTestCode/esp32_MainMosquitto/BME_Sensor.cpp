@@ -4,6 +4,7 @@
 #include <Adafruit_Sensor.h>
 
 #include "BME_Sensor.h"
+#include "MQTT.h"
 
 //BME I2C Settup
 Adafruit_BME280 bme;

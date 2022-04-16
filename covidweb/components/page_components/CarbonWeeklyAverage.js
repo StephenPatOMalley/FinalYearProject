@@ -22,7 +22,7 @@ class CarbonWeeklyData extends Component {
             axisX:{
                 interval:1,
                 intervalType: "day",
-                valueFormatString: "MM-DD"
+                valueFormatString: "DD-MM"
             },
 			data: [{
 				type: "line",
@@ -52,6 +52,7 @@ class CarbonWeeklyData extends Component {
 		for (var i = 0; i < numberOfResults; i++) {
             var date = GetTime(results[i].TimeStamp, "UTC-Date")
             if(dayLoop == null){
+                var theDate = new Date(date.Year, date.Month, date.Day)
                 dayLoop = date.Day
             }
             if(date.Day == dayLoop){
@@ -60,7 +61,7 @@ class CarbonWeeklyData extends Component {
             }
             if(date.Day != dayLoop || i == numberOfResults - 1){
                 dataPoints.push({
-                    x: new Date(date.Year, date.Month, date.Day),
+                    x: theDate,
                     y: (dailyCO2/count)
                 });
                 dayLoop = null

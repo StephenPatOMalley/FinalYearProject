@@ -1,7 +1,7 @@
 #include "WiFi_ESP.h"
+#include "MQTT.h"
 #include "BME_Sensor.h"
 #include "MQ135_Sensor.h"
-#include "AWS.h"
 
 void setup() {
   Serial.begin(115200);
@@ -10,13 +10,13 @@ void setup() {
   InitialiseMQ135();
   CalibrateMQ135();
   WifiSetup();
-  ConnectToAWS();
-  MQTT_Initialize();
+  MQTTConnectHost();
+  MQTTConnectBroker();
+  MQTTSubscribe();
   
 }
 
 void loop() {
-  MQTT_Publish();
-  MQTT_Reconnect();
-  WifiReconnect();
+  MQTTreconnect();
+  MQTTPublish();
 }

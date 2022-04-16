@@ -2,6 +2,7 @@
 #include <MQUnifiedsensor.h>
 
 #include "MQ135_Sensor.h"
+#include "MQTT.h"
 
 MQUnifiedsensor MQ135(BORAD, VOLTAGE_RESOLUTION, ADC_BIT_RESOLUTION, PIN, SENSOR_TYPE);
 

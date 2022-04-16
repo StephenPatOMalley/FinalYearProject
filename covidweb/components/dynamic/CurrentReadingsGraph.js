@@ -6,17 +6,23 @@ import GetTime from '../time/TimeParser'
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-var dps = []
-var updateInterval = 1000;
+var dataPoints = []
+var updateInterval = 800
+var graphLenght = 16
 
 class DynamicLineChart extends Component {
 	constructor() {
 		super();
 		this.updateChart = this.updateChart.bind(this);
 	}
+	
 	componentDidMount() {
-		setInterval(this.updateChart, updateInterval);
+		console.log(this.props, "--")
+		if(this.props.TimeStamp !== null){
+			setInterval(this.updateChart, updateInterval);
+		}
 	}
+
 	updateChart() {
         var results = this.props.data
         console.log(results.TimeStamp )
@@ -25,14 +31,19 @@ class DynamicLineChart extends Component {
             var yVal = results.Temperature
             var xVal = new Date(date.Year, date.Month, date.Day, date.Hours, date.Minutes, date.Seconds)
 
-            dps.push({x: xVal,y: yVal});
-            xVal++;
-            if (dps.length >  12 ) {
-                dps.shift();
+            dataPoints.push({x: xVal,y: yVal});
+            if (dataPoints.length >  graphLenght ) {
+                dataPoints.shift();
             }
         }
-        this.chart.render();
+		try{
+			this.chart.render();
+		}catch(err){
+			console.log(err)
+			dataPoints = []
+		}
 	}
+
 	render() {
 		const options = {
             theme: "light2",
@@ -45,26 +56,27 @@ class DynamicLineChart extends Component {
 			},
             axisX:{
                 title: "Time ",
-                interval:1,
+                interval:2,
                 intervalType: "second",
                 valueFormatString: "HH:mm:ss"
             },
 			data: [{
 				type: "line",
-                indexLabel: "{y}°",
+                indexLabel: "{y}°C",
                 toolTipContent: "</br> {y} °C",
-				dataPoints : dps
+				dataPoints : dataPoints
 			}]
 		}
 		
 		return (
-		<div>
-			<h1>React Dynamic Line Chart</h1>
-			<CanvasJSChart options = {options} 
-				onRef={ref => this.chart = ref}
-			/>
-			{/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
-		</div>
+		<div className={classes.container}>
+            <div className={classes.graph}>
+                <CanvasJSChart options = {options} 
+                    onRef={ref => this.chart = ref}
+                />
+                {/*You can get reference to the chart instance as shown above using onRef. This allows you to access all chart properties and methods*/}
+            </div>
+        </div>
 		);
 	}
 }

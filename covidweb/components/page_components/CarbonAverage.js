@@ -20,7 +20,9 @@ class CarbonAverage extends Component {
 				title: "Parts Per Million (PPM)",
 			},
             axisX:{
-                interval:1
+                interval:1,
+                intervalType: "hour",
+                valueFormatString: "DD-MM hh TT"
             },
 			data: [{
 				type: "line",
@@ -45,9 +47,9 @@ class CarbonAverage extends Component {
 		var numberOfResults = results.length
 		var chart = this.chart;
 		for (var i = 0; i < numberOfResults; i++) {
-            var date = GetTime(results[i].TimeStamp, "Hours")
+            var date = GetTime(results[i].TimeStamp, "UTC-Date")
 			dataPoints.push({
-				x: date,
+				x: new Date(date.Year, date.Month, date.Day, date.Hours, date.Minutes, date.Seconds),
 				y: results[i].CarbonDioxide
 			});
 		}

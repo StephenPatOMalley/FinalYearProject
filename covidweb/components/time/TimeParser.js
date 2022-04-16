@@ -1,9 +1,5 @@
 
 function GetTime(timeResult, Format){
-    if(Format == "Hours"){
-        var hoursResult = GetTimeHours(timeResult)
-        return hoursResult
-    }
     if(Format == "UTC-Date"){
         var UTCResult = GetTimeUTC(timeResult)
         return UTCResult
@@ -39,20 +35,6 @@ function GetTimeUTC(timeResult){
     }
 
     return newDateUTC
-}
-
-function GetTimeHours(timeResult){
-    var timeResultsSplit = SplitT(timeResult)
-    var time = timeResultsSplit[1]
-
-    var timeSplit = SplitFullStop(time)
-    var hmsFormat = timeSplit[0]
-
-    var hmsFormatSplit = SplitColon(hmsFormat)
-    var hours = hmsFormatSplit[0]
-
-    var hoursInt = parseInt(hours)
-    return hoursInt
 }
 
 // These Split Functions Return lists of split string values
