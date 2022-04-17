@@ -9,7 +9,7 @@ function Carbon24HourPage()
 {
   const dataCtx = useContext(DataContext)
   let Results = dataCtx.getlastDaybmeData()
-  console.log(Results)
+  console.log(Results, "---")
   return (
     <>
       <Head>

@@ -1,5 +1,5 @@
 export default async function handler(req, res) {
-    await fetch('http://localhost:3003/getWeeklyData', {
+    await fetch('http://localhost:8000/getWeeklyData', {
         method: 'POST'
     })
     .then((res) => res.json())
