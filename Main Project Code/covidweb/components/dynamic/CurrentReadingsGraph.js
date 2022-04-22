@@ -1,3 +1,4 @@
+//This Dynamic Graph was not used as I could not get it to work using NextJS
 import React, { Component } from 'react';
 import CanvasJSReact from '../../canvas_assets/canvasjs.react';
 

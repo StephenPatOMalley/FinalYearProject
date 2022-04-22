@@ -1,6 +1,6 @@
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
-import Layout from '../components/layout/Layout'
+import Layout from '../components/layout/LayoutFormat'
 import { NextUIProvider } from "@nextui-org/react"
 import { DataContextProvider } from '../store/BME_Data'
 

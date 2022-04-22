@@ -65,6 +65,7 @@ void setup() {
     Serial.print(".");
   }
   MQ135.setR0(calcR0/10);
+  Serial.println(calcR0/10);
   Serial.println("  done!.");
   
   if(isinf(calcR0)) {Serial.println("Warning: Conection issue, R0 is infinite (Open circuit detected) please check your wiring and supply"); while(1);}

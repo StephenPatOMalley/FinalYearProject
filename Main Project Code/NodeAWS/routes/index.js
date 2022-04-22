@@ -75,8 +75,12 @@ Device.on("message", async (topic, payload) => {
   if(load != null ){
     console.log(load)
     let currentTime = CurrentTime()
-    const data = new RoomDataModel({TimeStamp: currentTime, Temperature: load.temperature ,Humidity: load.humidity , CarbonDioxide: load.CO2})
-    await data.save()
+    try {
+      const data = new RoomDataModel({TimeStamp: currentTime, Temperature: load.temperature ,Humidity: load.humidity , CarbonDioxide: load.CO2})
+      await data.save()
+    } catch (error) {
+      console.log(error, "----", data)
+    }
     load = null
   }
   if(waitChange == false){
