@@ -5,10 +5,10 @@ import DataContext from '../store/BME_Data'
 
 const CarbonData = dynamic(() => import("../components/page_components/CarbonData").then((mod) => mod),{ssr:false})
 
-async function Carbon24HourPage()
+function Carbon24HourPage()
 {
   const dataCtx = useContext(DataContext)
-  let Results = await dataCtx.getlastDaybmeData()
+  let Results = dataCtx.getlastDaybmeData()
   console.log(Results, "---")
   return (
     <>

@@ -34,9 +34,7 @@ router.post("/getCurrentBMEData", function (req, res, next) {
 router.post("/getbmeLastDayData", async (req, res) => {
     let Daily = FindTime("Daily")
     let currentHours = CurrentTime()
-    console.log(Daily, currentHours, "----")
     await RoomDataModel.find({ TimeStamp: { $gte : Daily, $lte : currentHours} }).then(function (docs) {
-      //console.log(docs)
       res.status(200).json(docs)
     })
 })
@@ -45,7 +43,6 @@ router.post("/getbmeDayAverageData", async (req, res) => {
     let Daily = FindTime("Daily")
     let currentHours = CurrentTime()
     await RoomDataAverageModel.find({ TimeStamp: { $gte : Daily, $lte : currentHours} }).then(function (docs) {
-      //console.log(docs)
       res.status(200).json(docs)
     })
 })
@@ -54,7 +51,6 @@ router.post("/getWeeklyData", async (req, res) => {
     let Weekly = FindTime("Weekly")
     let currentHours = CurrentTime()
     await RoomDataAverageModel.find({ TimeStamp: { $gte : Weekly, $lte : currentHours} }).then(function (docs) {
-      //console.log(docs)
       res.status(200).json(docs)
     })
 })
