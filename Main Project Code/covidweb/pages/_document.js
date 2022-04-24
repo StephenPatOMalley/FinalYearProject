@@ -1,3 +1,4 @@
+// https://nextjs.org/docs/advanced-features/custom-document
 import document, { Html, Head, Main, NextScript } from 'next/document';
 import { CssBaseline } from '@nextui-org/react';
 

@@ -1,4 +1,5 @@
-
+// Time Parser takes in the ISO time string and splits it into it's parts of year 
+// , month, day, hours, minutes and seconds to be sent back as an Object
 function GetTime(timeResult, Format){
     if(Format == "UTC-Date"){
         var UTCResult = GetTimeUTC(timeResult)
@@ -34,7 +35,7 @@ function GetTimeUTC(timeResult){
         Seconds: seconds
     }
 
-    return newDateUTC
+    return newDateUTC // Returns Data Object to be used in the new Date object
 }
 
 // These Split Functions Return lists of split string values

@@ -19,6 +19,9 @@ function ReadingsTable(props) {
                             <td>Humidity</td>
                             <td>{props.hum} %</td>
                         </tr>    
+                        {/*
+                        https://www.devaradise.com/react-conditional-rendering-if-else
+                        */}
                         { CO2 <= 800
                         ? <tr className="table-success"><td>CO2</td><td>{props.carbon} PPM</td></tr>
                         : ( CO2 >= 800 && CO2 <= 1000

@@ -1,3 +1,5 @@
+//NextJS tutorial https://www.youtube.com/watch?v=MFuwkrseXVE&t=8092s
+// https://nextjs.org/docs/advanced-features/custom-app
 import '../styles/globals.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Layout from '../components/layout/LayoutFormat'

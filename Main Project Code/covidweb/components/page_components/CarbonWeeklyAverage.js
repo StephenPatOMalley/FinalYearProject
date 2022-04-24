@@ -1,3 +1,4 @@
+// Based Off Documation and Examples from https://canvasjs.com/react-charts/
 import React, { Component } from 'react';
 import CanvasJSReact from '../../canvas_assets/canvasjs.react';
 

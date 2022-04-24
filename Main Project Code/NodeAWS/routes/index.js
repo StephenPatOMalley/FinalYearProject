@@ -1,3 +1,5 @@
+//Ceration of Node Project https://expressjs.com/en/starter/generator.html
+//https://www.tutorialspoint.com/nodejs/nodejs_express_framework.htm
 var express = require('express');
 var router = express.Router();
 
@@ -17,7 +19,7 @@ const Topic = 'esp32/pub'
 const timeHourlyChange = 0
 var waitChange = false
 
-MonConnect()
+MonConnect() // Connects to database
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

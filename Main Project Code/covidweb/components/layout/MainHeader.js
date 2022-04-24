@@ -1,6 +1,9 @@
 import Link from "next/link"
+// https://react-bootstrap.github.io/components/table/
 import { Navbar, Container, Nav, NavDropdown} from 'react-bootstrap';
 
+
+// This function creates the Navagation Bar at the top of the web page
 function MainHeader(){
     return(
     <Navbar bg="primary" expand="lg">
@@ -9,6 +12,10 @@ function MainHeader(){
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="justify-content-end">
+                {/*
+                This passHref pass on the Link ref of NextJS to the Nav.Link of React-bootstrap
+                https://github.com/react-bootstrap/react-bootstrap/issues/4131#issuecomment-566139677
+                */}
                 <Link href="/" passHref>
                     <Nav.Link>Home</Nav.Link>
                 </Link>

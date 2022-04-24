@@ -1,4 +1,7 @@
 //This Dynamic Graph was not used as I could not get it to work using NextJS
+// due to the way that render is setup the graph will crash the website if
+// you try and go to add of the other pages.
+//Based Off Documation and Examples from https://canvasjs.com/react-charts/.
 import React, { Component } from 'react';
 import CanvasJSReact from '../../canvas_assets/canvasjs.react';
 

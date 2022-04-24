@@ -1,6 +1,9 @@
 import ReadingsTable from "./Table";
 
 function DataList(props) {
+    // The data recived from the API is an object in an Array but the initial
+    // set data of 0 is an jsut and object so we check to set if it an array
+    // or not.
     if (Array.isArray(props.data) === true)
     {
         return(

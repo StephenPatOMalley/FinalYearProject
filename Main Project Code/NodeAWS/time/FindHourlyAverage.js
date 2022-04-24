@@ -1,3 +1,4 @@
+//Time gets the average values over the last hour and enters into the RoomAverage Database
 var RoomDataModel = require('../models/RoomModel')
 var RoomDataAverageModel = require('../models/RoomAverageModel')
 

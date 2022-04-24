@@ -90,6 +90,7 @@ function FindTimeDays(currenttime, timerange){
 
 }
 
+// Checks the length of each month of the year if the day of the current month is the first
 function FindEndLastMonth(lastmonth){
   var lastMonthsNumberDays = 0
   switch (lastmonth) {
@@ -135,6 +136,8 @@ function FindEndLastMonth(lastmonth){
   return lastMonthsNumberDays
 }
 
+// If the number is less than two digit a zero has to be added back after the int converstion
+// back to a string
 function TimeFormatZero(time){
   if( time < 10){
     lastTime = "0" + time.toString()
